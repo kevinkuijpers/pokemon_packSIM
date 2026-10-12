@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PokeVault | Premium Pokémon TCG Collection</title>
+  <!-- FontAwesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="../styles/header.css" />
+  <link rel="stylesheet" href="../styles/sets.css">
+</head>
+<body>
+<div id="app-header" data-active="collection"></div>
+
+<div class="container page-shell">
+  <header class="hero">
+    <p class="eyebrow">Pokémon TCG</p>
+    <h1>Selected Set Browser</h1>
+    <p class="hero-text">Browse the exact Pokémon TCG sets from your spreadsheet in a clean and focused layout.</p>
+  </header>
+
+    <section class="sets-panel">
+        <div class="panel-heading">
+            <h2>Chosen Sets</h2>
+            <p>Click a set to open a dedicated cards page with every card from that set.</p>
+        </div>
+
+        <div id="collectionStats" class="collection-stats" hidden>
+            <article class="collection-stat-card">
+                <span class="collection-stat-label">Totale completion</span>
+                <strong id="statGlobalPct" class="collection-stat-value">0%</strong>
+                <span id="statGlobalCount" class="collection-stat-sub">0/0 kaarten</span>
+            </article>
+            <article class="collection-stat-card">
+                <span class="collection-stat-label">Meest complete set</span>
+                <strong id="statBestSetName" class="collection-stat-value">—</strong>
+                <span id="statBestSetPct" class="collection-stat-sub">0%</span>
+            </article>
+            <article class="collection-stat-card">
+                <span class="collection-stat-label">Collectiewaarde</span>
+                <strong id="statCollectionValue" class="collection-stat-value">0</strong>
+                <span class="collection-stat-sub">geschatte coins (verkoopwaarde)</span>
+            </article>
+            <article class="collection-stat-card">
+                <span class="collection-stat-label">Unieke kaarten</span>
+                <strong id="statUniqueCards" class="collection-stat-value">0</strong>
+                <span id="statTotalCopies" class="collection-stat-sub">0 total copies</span>
+            </article>
+        </div>
+
+        <div id="eraFilters" class="filter-bar"></div>
+    <div class="search-wrapper">
+      <i class="fas fa-search search-icon"></i>
+      <input
+        type="text"
+        id="setSearch"
+        class="set-search"
+        placeholder="Search Pokémon TCG sets..."
+      />
+    </div>
+    <div id="setsGrid" class="sets-grid"></div>
+
+</div>
+
+<script type="module" src="../scripts/sets.js"></script>
+<script src="../scripts/header.js" defer></script>
+<script src="../scripts/login.js" defer></script>
+
+</body>
+</html>

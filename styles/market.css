@@ -1,0 +1,620 @@
+@import url('header.css');
+@import url("scrollbar.css");
+
+/* ── market.css — companion to market.html ── */
+/* All base styles live in the <style> block inside market.html.
+   This file only patches the JS-generated card innerHTML to match. */
+
+.card p {
+    margin: 0;
+}
+
+/* seller line */
+.card p:nth-child(3) {
+    font-size: 0.76rem;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+}
+
+/* price line */
+.card p:nth-child(4) {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--gold);
+    background: var(--gold-dim);
+    border: 1px solid rgba(243, 200, 74, 0.18);
+    padding: 3px 14px;
+    border-radius: 40px;
+    margin-bottom: 10px;
+    font-family: 'DM Mono', monospace;
+}
+
+/* owned / missing */
+.card p:nth-child(5) {
+    font-size: 0.76rem;
+    margin-bottom: 10px;
+    color: var(--text-muted);
+}
+
+/* set name */
+.card p:nth-child(6) {
+    font-size: 0.73rem;
+    color: var(--text-dim);
+    margin-bottom: 14px;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-base: #060810;
+    --bg-surface: #0c0f1a;
+    --bg-card: #101422;
+    --bg-card-h: #141828;
+    --bg-input: #0e1120;
+    --border: rgba(255, 255, 255, 0.07);
+    --border-h: rgba(255, 255, 255, 0.14);
+    --accent: #2c5bff;
+    --accent-glow: rgba(44, 91, 255, 0.22);
+    --accent-dim: rgba(44, 91, 255, 0.12);
+    --gold: #f3c84a;
+    --gold-dim: rgba(243, 200, 74, 0.14);
+    --green: #3dffa0;
+    --green-dim: rgba(61, 255, 160, 0.1);
+    --green-bdr: rgba(61, 255, 160, 0.28);
+    --text: #eef2ff;
+    --text-muted: #6e7fa8;
+    --text-dim: #3e4f72;
+    --r-sm: 8px;
+    --r-md: 12px;
+    --r-lg: 18px;
+    --r-xl: 24px;
+}
+
+body {
+    background: var(--bg-base);
+    color: var(--text);
+    min-height: 100vh;
+    background-image:
+        radial-gradient(ellipse 55% 35% at 8% 0%, rgba(44, 91, 255, 0.08) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 30% at 92% 85%, rgba(61, 255, 160, 0.05) 0%, transparent 55%);
+}
+
+/* HEADER */
+.header {
+    background: rgba(6, 8, 16, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 68px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.logo-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #1e3faa, #2c5bff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    box-shadow: 0 4px 12px rgba(44, 91, 255, 0.35);
+}
+
+.logo-text {
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    color: var(--text);
+}
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 40px;
+    padding: 6px 16px;
+    font-size: 0.85rem;
+    font-family: inherit;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.18s;
+}
+
+.nav-pill:hover {
+    color: var(--text);
+    border-color: var(--border);
+    background: var(--bg-card);
+}
+
+.nav-pill.active {
+    color: #88abff;
+    border-color: rgba(44, 91, 255, 0.4);
+    background: var(--accent-dim);
+}
+
+/* PAGE HERO */
+.page-hero {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 52px 32px 36px;
+}
+
+.page-hero h1 {
+    font-size: 2.3rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    background: linear-gradient(130deg, #ffffff 25%, #8ab0ff 80%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    margin-bottom: 8px;
+}
+
+.page-hero p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* PAGE BODY */
+.page-body {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 32px 80px;
+}
+
+/* TOOLBAR */
+.toolbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.search-wrap {
+    position: relative;
+    flex: 1;
+    min-width: 220px;
+    max-width: 380px;
+}
+
+.search-wrap .search-icon {
+    position: absolute;
+    left: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-dim);
+    pointer-events: none;
+    width: 15px;
+    height: 15px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+#pokemonSearch {
+    width: 100%;
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    padding: 10px 14px 10px 38px;
+    font-size: 0.88rem;
+    font-family: inherit;
+    color: var(--text);
+    outline: none;
+    transition: 0.2s;
+}
+
+#pokemonSearch::placeholder {
+    color: var(--text-dim);
+}
+
+#pokemonSearch:focus {
+    border-color: rgba(44, 91, 255, 0.5);
+    background: #0f1525;
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+/* SET FILTERS */
+#setFilters {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+}
+
+#setFilters button {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 5px 15px;
+    border-radius: 40px;
+    font-size: 0.8rem;
+    font-family: inherit;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.15s;
+    white-space: nowrap;
+}
+
+#setFilters button:hover {
+    color: var(--text);
+    border-color: var(--border-h);
+}
+
+#setFilters button.active-set-filter {
+    background: var(--accent-dim);
+    border-color: rgba(44, 91, 255, 0.45);
+    color: #8ab5ff;
+}
+
+/* MARKETPLACE GRID */
+#marketplace {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(195px, 1fr));
+    gap: 16px;
+}
+
+#marketplace>p {
+    color: var(--text-muted);
+    grid-column: 1/-1;
+    padding: 80px 0;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+.pagination button,
+.pagination .page-label {
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--bg-card);
+    color: var(--text);
+    padding: 8px 12px;
+    font: inherit;
+}
+
+.pagination button {
+    cursor: pointer;
+}
+
+.pagination button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.pagination .page-label {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* CARD */
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--r-xl);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.22s ease, border-color 0.2s, background 0.2s;
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(44, 91, 255, 0.07), transparent 65%);
+    pointer-events: none;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--border-h);
+    background: var(--bg-card-h);
+}
+
+.card.own-card {
+    border-color: var(--green-bdr);
+    background: linear-gradient(160deg, #0c1e17 0%, #0b1913 100%);
+}
+
+.card.own-card::after {
+    background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(61, 255, 160, 0.07), transparent 65%);
+}
+
+.card.own-card:hover {
+    border-color: rgba(61, 255, 160, 0.45);
+}
+
+.own-badge {
+    position: absolute;
+    top: 11px;
+    right: 11px;
+    background: var(--green-dim);
+    border: 1px solid var(--green-bdr);
+    color: var(--green);
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 40px;
+    z-index: 1;
+}
+
+.card img {
+    width: 128px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 14px;
+    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.55));
+    transition: transform 0.22s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.card:hover img {
+    transform: scale(1.05);
+}
+
+.card h3 {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 3px;
+    text-align: center;
+    z-index: 1;
+}
+
+.card .set-name {
+    font-size: 0.73rem;
+    color: var(--text-dim);
+    margin-bottom: 12px;
+    text-align: center;
+    z-index: 1;
+}
+
+.card .seller {
+    font-size: 0.76rem;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    z-index: 1;
+}
+
+.card .price {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--gold);
+    background: var(--gold-dim);
+    border: 1px solid rgba(243, 200, 74, 0.18);
+    padding: 3px 14px;
+    border-radius: 40px;
+    margin-bottom: 10px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.3px;
+    z-index: 1;
+}
+
+.card .ownership {
+    font-size: 0.76rem;
+    margin-bottom: 14px;
+    color: var(--text-muted);
+    z-index: 1;
+}
+
+.card .ownership.owned {
+    color: var(--green);
+}
+
+.card .ownership.missing {
+    color: #ff7070;
+}
+
+.market-card-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.market-trade-btn {
+    background: linear-gradient(135deg, #1f9d63, #157a4c) !important;
+    box-shadow: 0 4px 14px rgba(31, 157, 99, 0.2) !important;
+}
+
+.market-trade-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #28b877, #1a8f5f) !important;
+}
+
+/* BUY BUTTON */
+.card button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: var(--r-md);
+    font-family: inherit;
+    font-size: 0.83rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.18s;
+    background: linear-gradient(135deg, #2251ee, #1a3fbb);
+    color: #fff;
+    letter-spacing: 0.2px;
+    box-shadow: 0 4px 14px rgba(44, 91, 255, 0.2);
+    position: relative;
+    z-index: 1;
+}
+
+.card button:hover:not(:disabled) {
+    background: linear-gradient(135deg, #3060ff, #2450cc);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(44, 91, 255, 0.35);
+}
+
+.card button:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.card button:disabled {
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* SKELETON */
+.card.skeleton {
+    pointer-events: none;
+}
+
+.skel {
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 6px;
+    animation: pulse 1.6s ease-in-out infinite;
+}
+
+.skel-img {
+    width: 128px;
+    height: 178px;
+    border-radius: 10px;
+    margin-bottom: 14px;
+}
+
+.skel-title {
+    width: 96px;
+    height: 13px;
+    margin-bottom: 6px;
+}
+
+.skel-sub {
+    width: 70px;
+    height: 11px;
+    margin-bottom: 12px;
+}
+
+.skel-price {
+    width: 78px;
+    height: 26px;
+    border-radius: 40px;
+    margin-bottom: 10px;
+}
+
+.skel-btn {
+    width: 100%;
+    height: 38px;
+    border-radius: var(--r-md);
+    margin-top: 4px;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 0.9;
+    }
+}
+
+/* RESPONSIVE */
+@media (max-width: 720px) {
+    .header-inner {
+        padding: 0 20px;
+    }
+
+    .page-hero {
+        padding: 36px 20px 24px;
+    }
+
+    .page-body {
+        padding: 0 20px 60px;
+    }
+
+    .page-hero h1 {
+        font-size: 1.8rem;
+    }
+
+    #marketplace {
+        grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    #marketplace {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .card img,
+    .skel-img {
+        width: 105px;
+    }
+}
+
+
+.seller-link {
+    color: #f3c84a;
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity 0.15s ease;
+    
+}
+
+.seller-link:hover {
+    opacity: 0.8;
+}

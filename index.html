@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PokeVault | Premium Pokémon TCG Collection</title>
+  <!-- FontAwesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="styles/header.css" />
+  <link rel="stylesheet" href="styles/index.css">
+</head>
+<body>
+
+<div id="app-header"></div>
+
+<main>
+  <!-- Hero section: clean onboarding, no game yet -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-gem"></i> Next-gen TCG Platform
+        </div>
+        <h1>Your Digital<br>Pokémon Vault</h1>
+        <p>Collect, trade, and showcase rare cards. Built for the modern trainer — sleek, fast, and ready for the TCGdex SDK integration.</p>
+        <div class="cta-buttons">
+          <a href="#" class="btn-primary" id="getStartedBtn">
+            <i class="fas fa-rocket"></i> Get Started
+          </a>
+          <a href="pages/crate-battles.html" class="btn-secondary" id="exploreBtn">
+            <i class="fas fa-box-open"></i> Open Crates
+          </a>
+          <a href="pages/crate-battles.html?mode=battle" class="btn-secondary">
+            <i class="fas fa-bolt"></i> Crate Battles
+          </a>
+          <a href="pages/wheel.html" class="btn-secondary">
+            <i class="fas fa-dharmachakra"></i> Wheel
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features: explaining the idea -->
+  <section class="features">
+    <div class="container">
+      <div class="section-header">
+        <h2>Designed for Collectors</h2>
+        <p>Everything you need to build your ultimate card collection</p>
+      </div>
+      <div class="features-grid">
+
+        <a href="pages/shop.html">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-boxes"></i>
+          </div>
+          <h3>Open Packs</h3>
+          <p>Experience the thrill of opening booster packs. Each pack contains rare cards ready for your vault.</p>
+        </div>
+        </a>
+
+        <a href="pages/market.html">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+          <h3>Live Market</h3>
+          <p>Buy and sell cards with other collectors. Dynamic pricing based on rarity and demand.</p>
+        </div>
+        </a>
+
+        <a href="pages/crate-battles.html">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <h3>Crate Battles</h3>
+          <p>Pick your crates and battle PvE or PvP. Highest total pull value wins every card from the match.</p>
+        </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pack Preview Section: hints at TCGdex future integration -->
+  <section class="pack-preview">
+    <div class="container">
+      <div class="section-header">
+        <h2><i class="fas fa-box-open"></i>New updated packs</h2>
+        <p>Powered by TCGdex SDK</p>
+      </div>
+      <div class="pack-grid">
+        <div class="pack-card-demo">
+          <div class="pack-image">
+            <i class="fas fa-fire-flame-curved"></i>
+          </div>
+          <div class="pack-info">
+            <h3>Scarlet & Violet</h3>
+            <p>Discover new ex cards and rare illustrations</p>
+            <span class="pack-tag"><i class="fas fa-code-branch"></i> Shop now!</span>
+          </div>
+        </div>
+        <div class="pack-card-demo">
+          <div class="pack-image">
+            <i class="fas fa-water"></i>
+          </div>
+          <div class="pack-info">
+            <h3>Paldea Evolved</h3>
+            <p>Featuring Sprigatito, Fuecoco & Quaxly lines</p>
+            <span class="pack-tag"><i class="fas fa-database"></i> Shop now!</span>
+          </div>
+        </div>
+        <div class="pack-card-demo">
+          <div class="pack-image">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <div class="pack-info">
+            <h3>Obsidian Flames</h3>
+            <p>Dark-type tera Pokémon & rare pulls</p>
+            <span class="pack-tag"><i class="fab fa-node-js"></i> Shop now!</span>
+          </div>
+        </div>
+      </div>
+      <div class="note-coming">
+        <i class="fas fa-info-circle"></i> Site is currently in BETA!
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <i class="fas fa-database"></i>
+        <span>PokeVault</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://tcgdex.dev/">API (TCGdex)</a>
+      </div>
+    </div>
+    <div class="copyright">
+      © 2025 PokeVault — A clean foundation for Pokémon TCG collection. Ready for TCGdex SDK integration. And we all love cp.
+    </div>
+  </div>
+</footer>
+
+<script src="scripts/header.js" defer></script>
+<script src="scripts/login.js" defer></script>
+</body>
+</html>

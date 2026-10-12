@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PokeVault | Storybook</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="../styles/header.css" />
+    <link rel="stylesheet" href="../styles/storybook.css" />
+</head>
+<body>
+    <div id="app-header" data-active="collection"></div>
+
+    <main class="storybook-page">
+        <section class="storybook-hero">
+            <div class="storybook-hero-glow"></div>
+            <h1><i class="fas fa-book-open"></i> Card Storybook</h1>
+            <p>Unlock chapters per set, claim rewards, and build your legend.</p>
+            <div id="storyEventSpotlight" class="story-event-spotlight is-hidden"></div>
+        </section>
+
+        <section class="storybook-help">
+            <h2><i class="fas fa-circle-info"></i> How does Storybook work?</h2>
+            <ol>
+                <li><strong>1. Collect cards per set</strong> — your completion % rises automatically.</li>
+                <li><strong>2. Unlock chapters</strong> — at 25%, 50%, 75%, and 100% new chapters open.</li>
+                <li><strong>3. Claim rewards</strong> — open a set and click <em>Claim</em> on available chapters.</li>
+                <li><strong>4. Bonus unlocks</strong> — some chapters grant extra cosmetics alongside coins.</li>
+            </ol>
+        </section>
+
+        <section class="storybook-grid" id="storybookGrid"></section>
+    </main>
+
+    <div class="story-modal is-hidden" id="storySetModal" role="dialog" aria-modal="true">
+        <div class="story-modal-backdrop" id="storyModalClose"></div>
+        <div class="story-modal-card">
+            <button type="button" class="story-modal-close" id="storyModalCloseBtn" aria-label="Close">&times;</button>
+            <img id="storySetCover" class="story-set-cover is-hidden" alt="">
+            <h2 id="storySetTitle"></h2>
+            <p id="storySetProgress"></p>
+            <div id="storyNextChapterGuide"></div>
+            <div id="storyChapterList"></div>
+        </div>
+    </div>
+
+    <script src="../scripts/header.js" defer></script>
+    <script src="../scripts/login.js" defer></script>
+    <script type="module" src="../scripts/storybook.js"></script>
+</body>
+</html>
